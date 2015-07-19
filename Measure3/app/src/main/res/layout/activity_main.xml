@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout"
+    android:background="#005A96"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text=""
+        android:id="@+id/measure"
+        android:background="@drawable/rounded_button"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="45dp"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/menu"
+        android:background="@drawable/hamburger"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/save"
+        android:background="@drawable/arrowbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/menu"
+        android:layout_alignStart="@+id/menu" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/flatnobg"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/length"
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/measure"
+        android:layout_toStartOf="@+id/measure"
+        android:layout_marginRight="97dp"
+        android:layout_marginEnd="97dp" />
+
+
+</RelativeLayout>
