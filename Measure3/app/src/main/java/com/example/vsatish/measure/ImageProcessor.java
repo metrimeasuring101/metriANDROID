@@ -46,9 +46,9 @@ public class ImageProcessor {
 	MatOfPoint previousPoints = new MatOfPoint();
 	MatOfPoint2f nextPoints = new MatOfPoint2f();
 	Boolean firstTime = false;
-    Double averagePixelDisplacement = 0.0;
-    Double tempAveragePixelDisplacement = 0.0;
-    Double overallPixelDisplacement = 0.0;
+    float averagePixelDisplacement = 0;
+    float tempAveragePixelDisplacement = 0;
+    float overallPixelDisplacement = 0;
     int numDisplacements = 0;
 	private static final String  TAG = "Main Activity";
 
@@ -104,7 +104,7 @@ public class ImageProcessor {
             Point[] pointn = nextPoints.toArray();
             for (int i = 0; i < pointp.length; i++) {
                 //Core.circle(original, pointp[i], 15, new Scalar(0, 0, 255));
-                tempAveragePixelDisplacement = Math.sqrt( Math.pow((pointn[i].x - pointp[i].x), 2) + Math.pow((pointn[i].y - pointp[i].y), 2));
+                tempAveragePixelDisplacement = (float)(Math.sqrt( Math.pow((pointn[i].x - pointp[i].x), 2) + Math.pow((pointn[i].y - pointp[i].y), 2)));
                 if (tempAveragePixelDisplacement < 100 && tempAveragePixelDisplacement > 20 && Math.abs(pointn[i].y - pointp[i].y) < 5) {
                     Core.line(original, pointp[i], pointn[i], new Scalar(0, 255, 0), 10);
                     averagePixelDisplacement += tempAveragePixelDisplacement;
@@ -117,11 +117,11 @@ public class ImageProcessor {
             if (averagePixelDisplacement > 0) {
                 overallPixelDisplacement += averagePixelDisplacement;
             }
-//            Core.putText(original, "" + (overallPixelDisplacement / 830) * 12.5, new Point(50, 50), 2, 2.5, new Scalar(0, 255, 0), 3);
+            Core.putText(original, "" + (overallPixelDisplacement / 830) * 12.5, new Point(50, 50), 2, 2.5, new Scalar(0, 255, 0), 3);
 
 //            Log.i(TAG, "AverageDisplacement" + averagePixelDisplacement);
 //            Log.i(TAG, "OverallDisplacement" + overallPixelDisplacement);
-            averagePixelDisplacement = 0.0;
+            averagePixelDisplacement = 0;
             //since the images are always changes, features have to be found again, using the current frame, which is now stored in oldMat/oldMatGray
             Imgproc.goodFeaturesToTrack(oldMatGray, previousPoints, 200, 0.01, 0.01);
 
@@ -136,7 +136,7 @@ public class ImageProcessor {
 	}
 
     public double getLength() {
-        return Math.floor((double)(overallPixelDisplacement / 830) * 12.5 * 100) / 100;
+        return Math.floor((overallPixelDisplacement / 830) * 12.5 * 100) / 100;
     }
 	
 //public Mat runOpticalFlow(Mat frame) {

@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.content.Intent;
+
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -152,6 +154,11 @@ public class MainActivity extends Activity implements CvCameraViewListener, View
             return inputFrame;
     }
 
+    public void save (View v) {
+        Intent intent = new Intent(this, NameActivity.class);
+        startActivity(intent);
+    }
+
     private void updateLength() {
         Thread timer = new Thread() { //new thread
             public void run() {
@@ -163,8 +170,8 @@ public class MainActivity extends Activity implements CvCameraViewListener, View
                             @Override
                             public void run() {
                                 // TODO Auto-generated method stub
-
-                                length.setText("" + mImageProcessor.getLength() + "in.");
+                                if (!measure.isPressed() && mImageProcessor.getLength() > 0)
+                                    length.setText("" + mImageProcessor.getLength() + "in.");
                             }
                         });
 

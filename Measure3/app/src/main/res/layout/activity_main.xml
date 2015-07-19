@@ -30,6 +30,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:id="@+id/save"
+        android:onClick="save"
         android:background="@drawable/arrowbutton"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/menu"
